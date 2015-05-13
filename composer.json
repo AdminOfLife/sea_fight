@@ -1,0 +1,12 @@
+{
+    "require-dev": {
+		"phing/phing": "2.*",
+		"squizlabs/php_codesniffer": "*",
+		"fabpot/php-cs-fixer": "*",
+		"jakub-onderka/php-parallel-lint": "*",
+
+        "phpunit/phpunit": "*"
+    },
+    "minimum-stability": "stable",
+	"autoload": {"psr-4": {"App\\": "src/App/"}}
+}

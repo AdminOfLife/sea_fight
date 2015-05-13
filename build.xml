@@ -1,0 +1,27 @@
+<project name="makeproject" basedir="." default="app">
+
+    <property name="src_dir" value="${project.basedir}/src" />
+    <property name="bin_dir" value="${project.basedir}/vendor/bin" />
+
+    <target name="parallel-lint" description="Run PHP parallel lint">
+        <exec
+                command="${bin_dir}/parallel-lint ${src_dir}"
+                passthru="true"/>
+    </target>
+
+    <target name="phpcs-fix" description="Run PHP-CS-Fixer">
+        <exec
+                command="${bin_dir}/php-cs-fixer --diff --level=psr2 fix ${src_dir}"
+                passthru="false"/>
+    </target>
+
+    <target name="phpcs" description="Отчёт о нарушениях в стиле кода в формате Checkstyle">
+        <exec
+                command="${bin_dir}/phpcs --standard=Zend ${src_dir}"
+                passthru="true"/>
+    </target>
+
+    <target name="app" depends="parallel-lint, phpcs-fix, phpcs">
+        <echo msg="Завершение проверки ${src_dir}" />
+    </target>
+</project>
