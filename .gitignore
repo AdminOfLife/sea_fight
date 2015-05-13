@@ -1,3 +1,5 @@
+/.idea
 /vendor
 /src/App/config/config.php
-/.idea
+composer.lock
+composer.phar
